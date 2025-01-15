@@ -1,0 +1,223 @@
+:root {
+  --accent-color: #8ca7c3; /* Серый акцент */
+  --dark-accent-color: #6c757d; /* Темный серый */
+  --light-accent-color: #e9ecef; /* Светлый серый */
+  --text-color: #212529; /* Темный текст */
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  --link-color: var(--text-color, #6c757d);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: var(--link-color);
+  user-select: none;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.1);
+
+  .cartLink {
+    color: var(--link-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--dark-accent-color);
+    }
+  }
+
+  .homeLink {
+    &:hover svg {
+      fill: var(--dark-accent-color);
+    }
+
+    svg {
+      fill: var(--link-color);
+    }
+  }
+
+  .shopName {
+    margin: 0;
+  }
+}
+
+content {
+  --gap: 16px; /* Увеличенный отступ между элементами */
+
+  display: flex;
+  margin-top: 20px;
+  padding: 20px;
+  color: var(--text-color);
+  gap: var(--gap);
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: var(--light-accent-color);
+    row-gap: var(--gap);
+
+    .menuWrapper {
+      display: flex;
+      flex-direction: column;
+      row-gap: calc(var(--gap) / 2);
+
+      a {
+        color: var(--text-color);
+        text-decoration: none;
+        
+      }
+    }
+  }
+
+  .items {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--gap); /* Используем новый отступ между карточками */
+
+    .toy {
+      --link-color: var(--text-color);
+      --text-color: #343a40;
+
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+      padding: calc(var(--gap) / 2);
+      border-radius: calc(var(--gap) / 2);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      transition: transform 0.3s ease; /* Плавная анимация увеличения */
+
+      &:hover {
+        transform: scale(1.05); /* Увеличение карточки при наведении */
+      }
+
+      .cover {
+        img {
+          width: 150px;
+          height: 150px;
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        row-gap: calc(var(--gap) / 2);
+        height: 100%;
+
+        .title {
+          font-weight: bolder;
+        }
+
+        .description {
+          color: var(--dark-accent-color);
+        }
+
+        .price {
+          text-align: right;
+          color: #28a745;
+        }
+
+        div:has(a) {
+          display: flex;
+          justify-content: center;
+          margin-top: auto;
+
+          a {
+            color: var(--link-color);
+            text-decoration: none;
+            padding: calc(var(--gap) / 2);
+            background-color: var(--accent-color);
+            border-radius: var(--gap);
+          }
+        }
+      }
+    }
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: var(--light-accent-color);
+    row-gap: var(--gap);
+
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    .filtersWrapper {
+      display: grid;
+      grid-template-columns: max-content auto;
+      row-gap: calc(var(--gap) / 2);
+      column-gap: calc(var(--gap) / 2);
+
+      > :nth-child(odd) {
+        text-align: right;
+      }
+
+      select {
+        width: 100%;
+      }
+    }
+  }
+
+  .menu,
+  .filters {
+    .title {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  content {
+    .items {
+      grid-template-columns: 1fr;
+
+      .toy {
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  content {
+    flex-direction: column;
+    .menu,
+    .filters {
+      max-height: 100px;
+      height: 100px;
+      flex-shrink: 1;
+    }
+    .menu {
+      order: 1;
+      width: 100%;
+    }
+    .filters {
+      order: 2;
+      width: 100%;
+    }
+    .items {
+      order: 3;
+    }
+  }
+}
