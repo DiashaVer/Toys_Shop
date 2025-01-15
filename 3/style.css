@@ -69,6 +69,8 @@ content {
     padding: 20px;
     background-color: var(--light-accent-color);
     row-gap: var(--gap);
+    min-height: min-content;
+
 
     .menuWrapper {
       display: flex;
@@ -148,7 +150,6 @@ content {
       }
     }
   }
-
   .filters {
     display: flex;
     flex-direction: column;
@@ -157,24 +158,41 @@ content {
     padding: 20px;
     background-color: var(--light-accent-color);
     row-gap: var(--gap);
-
+    min-height: min-content;
+    
+    
+    /* Добавляем стили для ссылок */
     a {
       color: var(--text-color);
       text-decoration: none;
+      transition: color 0.2s ease-in-out; /* Добавляем анимацию при наведении */
+    
+      &:hover {
+        color: darken(var(--text-color), 20%); /* Изменяем цвет при наведении */
+      }
     }
-
+    
+    /* Добавляем стили для контейнера фильтров */
     .filtersWrapper {
       display: grid;
       grid-template-columns: max-content auto;
       row-gap: calc(var(--gap) / 2);
       column-gap: calc(var(--gap) / 2);
-
+    
+      /* Добавляем стили для нечетных элементов */
       > :nth-child(odd) {
         text-align: right;
+        font-weight: bold; /* Делаем текст полужирным */
       }
-
+    
+      /* Добавляем стили для селектов */
       select {
         width: 100%;
+        padding: 10px; /* Добавляем внутренний отступ */
+        border: none; /* Убираем границу */
+        border-radius: 10px; /* Добавляем радиус */
+        background-color: #f9f9f9; /* Добавляем цвет фона */
+        cursor: pointer; /* Добавляем указатель для кнопки */
       }
     }
   }
@@ -220,4 +238,40 @@ content {
       order: 3;
     }
   }
+}
+
+#footer {
+    position: absolute; /* Фиксируем футер */
+    bottom: auto; /* Устанавливаем футер внизу */
+    left: 0; /* Выравниваем футер по левому краю */
+    right: 0; /* Выравниваем футер по правому краю */
+    display: flex; /* Используем Flexbox для центрирования */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    padding: auto ; /* Добавляем отступы */
+    background-color: var(--accent-color); /* Задаем цвет фона */
+    color: var(--text-color); /* Задаем цвет текста */
+    text-align: center; /* Центрируем текст внутри параграфа */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px; /* Отступы между ссылками */
+}
+
+.footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--dark-accent-color); /* Изменяем цвет при наведении */
+    }
 }
